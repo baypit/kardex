@@ -22,4 +22,16 @@ export class AppComponent {
     this.router.navigate(["add"]);   
    }
 
+   vender(){
+    this.router.navigate(["sold"]);   
+   }
+
+   ingresar(){
+    this.router.navigate(["ing"]);   
+   }
+
+   kardex(){
+    this.router.navigate(["kar"]);   
+   }
+
 }

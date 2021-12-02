@@ -30,7 +30,8 @@ export class ServiceService {
   updateProducto(producto:Producto){
     console.log("ipersona "+producto.id);
     console.log("ipersona nombre "+producto.nombre);
-    return this.http.put<Producto>(this.Url+"/"+producto.id, producto);
+    let Url='http://localhost:8080/api/editarProducto';
+    return this.http.post<Producto>(Url, producto);
    
   }
 

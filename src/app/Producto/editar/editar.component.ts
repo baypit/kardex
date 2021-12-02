@@ -32,7 +32,7 @@ export class EditarComponent implements OnInit {
   actualizar(producto:Producto){
     this.service.updateProducto(producto).subscribe(data=>{
       this.productoEdit = data;
-      alert("Se actualizo la persona");
+      alert("Se actualizo el producto");
       this.router.navigate(["listar"]);
     })
   }
