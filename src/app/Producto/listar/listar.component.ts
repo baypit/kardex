@@ -19,4 +19,12 @@ export class ListarComponent implements OnInit {
     })
   }
 
+  editar(producto:Producto): void{
+    if (producto.id != null ) {
+      localStorage.setItem("id",producto.id.toString());
+    }
+    
+    this.router.navigate(["edit"]);
+  }
+
 }
