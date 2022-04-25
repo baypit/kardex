@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../Modelo/Producto';
+import { Kardex } from '../Modelo/Kardex';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class ServiceService {
 
   Url='http://localhost:8080/api/productos';
 
+  
   getProductos(){
     return this.http.get<Producto[]>(this.Url);
   }
@@ -35,11 +37,37 @@ export class ServiceService {
    
   }
 
+  venderProducto(producto:Producto){
+    console.log("iproducto "+producto.id);
+    console.log("producto nombre "+producto.nombre);
+    let Url='http://localhost:8080/api/venderProducto';
+    return this.http.post<Producto>(Url, producto);
+   
+  }
+
+  ingresarProducto(producto:Producto){
+    console.log("iproducto "+producto.id);
+    console.log("producto nombre "+producto.nombre);
+    let Url='http://localhost:8080/api/ingresarProducto';
+    return this.http.post<Producto>(Url, producto);
+   
+  }
+
   deleteProducto(producto:Producto){
     console.log("ipersona "+producto.id);
     console.log("ipersona nombre "+producto.nombre);
     return this.http.delete<Producto>(this.Url+"/"+producto.id)
    
+  }
+
+  registrarKardex(kardex: Kardex){
+    let Url='http://localhost:8080/api/registroKardex';
+    return this.http.post<Kardex>(Url,kardex);
+  }
+
+  getKardex(){
+    let Url='http://localhost:8080/api/kardex';
+    return this.http.get<Kardex[]>(Url);
   }
 
 }

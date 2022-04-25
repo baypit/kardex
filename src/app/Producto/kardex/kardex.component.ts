@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Kardex } from 'src/app/Modelo/Kardex';
+import { ServiceService } from 'src/app/Service/service.service';
 
 @Component({
   selector: 'app-kardex',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KardexComponent implements OnInit {
 
-  constructor() { }
+  listKardex:Kardex[] | undefined;
+  constructor(private service:ServiceService, private router:Router ) { }
 
   ngOnInit(): void {
+    this.service.getKardex().subscribe(data =>{
+      this.listKardex=data;
+    })
   }
 
 }
